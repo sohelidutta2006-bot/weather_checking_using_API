@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather App</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #dd0a5b, #acb6e5);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgb(244, 2, 163);
+      padding: 25px;
+      border-radius: 10px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #1aff00;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>🌦 Weather Checker</h2>
+
+    <input type="text" id="city" placeholder="Enter city name">
+    <br>
+    <button onclick="getWeather()">Check Weather</button>
+
+    <div id="result">
+      <p id="temp"></p>
+      <p id="condition"></p>
+    </div>
+  </div>
+
+  <script>
+    function getWeather() {
+      const city = document.getElementById("city").value;
+
+      if (city === "") {
+        alert("Please enter a city name");
+        return;
+      }
+
+      const apiKey = "8e17e2e0ce0542a2b7b64247252412";
+      const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("temp").innerText =
+            "Temperature: " + data.current.temp_c + " °C";
+
+          document.getElementById("condition").innerText =
+            "Condition: " + data.current.condition.text;
+        })
+        .catch(error => {
+          document.getElementById("temp").innerText = "City not found";
+          document.getElementById("condition").innerText = "";
+        });
+    }
+  </script>
+
+</body>
+</html>
