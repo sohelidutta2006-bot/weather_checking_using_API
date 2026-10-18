@@ -1,6 +1,10 @@
 # 🌦️ Weather Checker
 
+
 A simple and user-friendly Weather Checker web application built using HTML, CSS, and JavaScript. It allows users to check the current weather of any city using the WeatherAPI.
+## 🔗 Project Links
+- 🌐 Live Demo: https://weathercheckingsite-pdkzjw8m2-soheli.vercel.app/
+- 💻 GitHub Repository: https://github.com/sohelidutta2006-bot/weather_checking_using_API
 
 ## ✨ Features
 
@@ -23,3 +27,4 @@ A simple and user-friendly Weather Checker web application built using HTML, CSS
 ```text
 Weather-Checker/
 └── index.html
+
